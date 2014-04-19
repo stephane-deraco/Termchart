@@ -1,0 +1,3 @@
+jstat -gc <vmid> 1000 | awk 'NR > 1 { gsub(",", ".", $6); print $6; fflush(stdout); }' | ./termchart.py
+vmstat 1 | awk '{print $15; fflush(stdout)}' | ./termchart.py --no-keep
+
