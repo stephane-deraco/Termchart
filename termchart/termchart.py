@@ -8,7 +8,7 @@ import argparse
 __appname__ = 'termchart'
 __version__ = "0.1"
 __author__ = "Stéphane Deraco <stephane@deraco.fr>"
-__licence__ = "GPL"
+__licence__ = "MIT"
 
 import sys
 import os
