@@ -26,12 +26,12 @@ received first is discarded (like a FIFO).
 
 Regarding the `--no-keep` option, we must consider two cases:
 * the stream of data input is finished (example: `cat datat.txt | termchart.py`)
-** by default, the chart stays on the terminal ; any key will exit
-** with the `--no-keep` option, the program will exit immediately after the end of the stream, and clear the screen ;
+  * by default, the chart stays on the terminal ; any key will exit
+  * with the `--no-keep` option, the program will exit immediately after the end of the stream, and clear the screen ;
 so you will not see anything, this option is not useful in that case
 * the stream of data is not finished, the chart is updated live, and pressing on `CTRL-C` will exit the program
-** by default, the chart stays on the terminal ; any key will then exit
-** with the `--no-keep` option, the program will exit immediately after pressing `CTRL-C`
+  * by default, the chart stays on the terminal ; any key will then exit
+  * with the `--no-keep` option, the program will exit immediately after pressing `CTRL-C`
 
 # Examples
 ## Display user CPU Usage
@@ -41,12 +41,18 @@ vmstat 1 | awk '{print $13; fflush(stdout)}' | termchart.py
 
 Note: it is important to use `fflush(stdout)` in `awk` to force it to flush immediately.
 
+![CPU usage chart](https://raw.githubusercontent.com/stephane-deraco/Termchart/gh-pages/images/cpu.png "CPU usage chart")
+
 ## Ping time
 ```
 ping www.google.fr | awk 'BEGIN {FS="[=]|[ ]"} NR > 1 {print $11; lush(stdout)}' | termchart.py
 ```
 
+![Ping chart](https://raw.githubusercontent.com/stephane-deraco/Termchart/gh-pages/images/ping.png "Ping chart")
+
 ## Java Memory Eden space usage
 ```
 jstat -gc <vmid> 1000 | awk 'NR > 1 { gsub(",", ".", $6); print $6; fflush(stdout); }' | termchart.py
 ```
+
+![Java memory chart](https://raw.githubusercontent.com/stephane-deraco/Termchart/gh-pages/images/java.png "Java memory chart")
