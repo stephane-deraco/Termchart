@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Termchart by stephane-deraco</title>
@@ -12,7 +12,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,63 +21,127 @@
 
   ga('create', 'UA-50199950-1', 'stephane-deraco.github.io');
   ga('send', 'pageview');
-
-  </script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
         <h1 class="header">Termchart</h1>
+
         <p class="header">Small Python script to draw barcharts in terminal</p>
 
         <ul>
-          <li class="download"><a class="buttons" href="https://github.com/stephane-deraco/Termchart/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/stephane-deraco/Termchart/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/stephane-deraco/Termchart">View On GitHub</a></li>
+            <li class="download"><a class="buttons" href="https://github.com/stephane-deraco/Termchart/zipball/master">Download ZIP</a></li>
+            <li class="download"><a class="buttons" href="https://github.com/stephane-deraco/Termchart/tarball/master">Download TAR</a></li>
+            <li><a class="buttons github" href="https://github.com/stephane-deraco/Termchart">View On GitHub</a></li>
         </ul>
 
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/stephane-deraco">stephane-deraco</a></p>
+    </header>
+    <section>
+        <h3><a name="what-is-termchart" class="anchor" href="#what-is-termchart"><span class="octicon octicon-link"></span></a>What is Termchart</h3>
 
+        <p>
+            <b>Termchart</b> is a simple Python script that takes data from standard input, and draws a barchart on the
+            terminal using ncurses.
+        </p>
 
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h3><a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <p>
+            All you need is the <code>termchart.py</code> file. You can grab it using <code>wget</code> or
+            <code>cURL</code>:
+        </p>
+        <pre><code>wget https://raw.githubusercontent.com/stephane-deraco/Termchart/develop/termchart/termchart.py</code></pre>
+        <p>
+            Don't forget to do <code>chmod +x termchart.py</code> after.
+        </p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+        <h3><a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+        <p>
+            The requirements are:
+        </p>
+        <ul>
+            <li>Python curses library</li>
+            <li>Linux (as the script uses special file like /dev/tty)</li>
+        </ul>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+        <p><b>Note:</b> this script has not been tested with Python 3.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+        <h3><a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+        <pre><code>termchart.py [--no-keep]</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+        <p>
+            The script wait for data coming from standard input. It can be passed using pipes, like <code>cat data.txt |
+            termchart.py</code>
+        </p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+        <p>
+            The script must receive data consisting of numbers, with only one number per line. Everything else will be
+            ignored.
+        </p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+        <p>
+            Each time the script receive data, it displays a bar on the terminal with a height relative to the value
+            received. The Y scale is automatically adjusted. If there are more data to display than the width of the
+            terminal, then the data received first is discarded (like a FIFO).
+        </p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+        <p>
+            Regarding the --no-keep option, we must consider two cases:
+        </p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
-  </body>
+        <ul>
+            <li>the stream of data input is finished (example: cat datat.txt | termchart.py)
+                <ul>
+                    <li>by default, the chart stays on the terminal ; any key will exit</li>
+                    <li>with the --no-keep option, the program will exit immediately after the end of the stream, and
+                        clear the screen ; so you will not see anything, this option is not useful in
+                        that case
+                    </li>
+                </ul>
+            </li>
+            <li>the stream of data is not finished, the chart is updated live, and pressing on CTRL-C will exit the
+                program
+                <ul>
+                    <li>by default, the chart stays on the terminal ; any key will then exit</li>
+                    <li>with the --no-keep option, the program will exit immediately after pressing CTRL-C</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3><a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots & examples</h3>
+
+        <h4>Display user CPU Usage</h4>
+
+        <pre><code>vmstat 1 | awk '{print $13; fflush(stdout)}' | termchart.py</code></pre>
+        Note: it is important to use <code>fflush(stdout)</code> in awk to force it to flush immediately.
+        
+        <img src="images/cpu.png">
+
+        <h4>Ping time</h4>
+
+        <pre><code>ping www.google.fr | awk 'BEGIN {FS="[=]|[ ]"} NR > 1 {print $11; fflush(stdout)}' | termchart.py</code></pre>
+
+        <img src="images/ping.png">
+
+        <h4>Java Memory Eden space usage</h4>
+
+        <pre><code>jstat -gc &lt;vmid&gt; 1000 | awk 'NR > 1 { gsub(",", ".", $6); print $6; fflush(stdout); }' | termchart.py</code></pre>
+
+        <img src="images/java.png">
+
+    </section>
+    <footer>
+        <p>
+            <small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+        </p>
+    </footer>
+</div>
+<!--[if !IE]>
+<script>fixScale(document);</script><![endif]-->
+
+</body>
 </html>
