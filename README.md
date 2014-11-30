@@ -45,7 +45,7 @@ Note: it is important to use `fflush(stdout)` in `awk` to force it to flush imme
 
 ## Ping time
 ```
-ping www.google.fr | awk 'BEGIN {FS="[=]|[ ]"} NR > 1 {print $11; lush(stdout)}' | termchart.py
+ping www.google.fr | awk 'BEGIN {FS="[=]|[ ]"} NR > 1 {print $11; fflush(stdout)}' | termchart.py
 ```
 
 ![Ping chart](https://raw.githubusercontent.com/stephane-deraco/Termchart/gh-pages/images/ping.png "Ping chart")
